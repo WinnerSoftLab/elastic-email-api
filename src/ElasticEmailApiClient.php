@@ -43,12 +43,12 @@ class ElasticEmailApiClient
         $data[self::API_KEY_FIELD] = $this->apiKey;
         $response = $this->httpClient->request(
             $request->getMethod(),
-            ElasticEmailApiConstant::LOAD_TEMPLATE_URL,
+            $request->getUrl(),
             [RequestOptions::FORM_PARAMS => $data]
         )->getBody()->getContents();
         $response = json_decode($response, true);
 
-        if (empty($response) || (!empty($response['success']) && false === $response['success'])) {
+        if (empty($response) || empty($response['success']) || empty($response['data'])) {
             if (!empty($response['error']) && ElasticEmailApiConstant::RESPONSE_TEMPLATE_NOT_FOUND === $response['error']) {
                 throw new ElasticEmailTemplateApiException(ElasticEmailApiConstant::RESPONSE_TEMPLATE_NOT_FOUND);
             }
