@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace AdpElasticMail;
 
@@ -21,7 +20,7 @@ class ElasticEmailApiRequest
      * @param array  $data
      * @param string $method
      */
-    public function __construct(string $url, array $data, string $method = 'POST')
+    public function __construct($url, array $data, $method = 'POST')
     {
         $this->url = $url;
         $this->data = $data;
@@ -31,7 +30,7 @@ class ElasticEmailApiRequest
     /**
      * @return string
      */
-    public function getUrl(): string
+    public function getUrl()
     {
         return $this->url;
     }
@@ -39,7 +38,7 @@ class ElasticEmailApiRequest
     /**
      * @return array
      */
-    public function getData(): array
+    public function getData()
     {
         return $this->data;
     }
@@ -47,7 +46,7 @@ class ElasticEmailApiRequest
     /**
      * @return string
      */
-    public function getMethod(): string
+    public function getMethod()
     {
         return $this->method;
     }

@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace AdpElasticMail;
 
@@ -23,7 +22,7 @@ class ElasticEmailApiClient
      * @param Client $httpClient
      * @param string $apiKey
      */
-    public function __construct(Client $httpClient, string $apiKey)
+    public function __construct(Client $httpClient, $apiKey)
     {
         $this->httpClient = $httpClient;
         $this->apiKey = $apiKey;
@@ -37,7 +36,7 @@ class ElasticEmailApiClient
      * @throws ElasticEmailTemplateApiException
      * @throws GuzzleException
      */
-    public function sendRequest(ElasticEmailApiRequest $request): array
+    public function sendRequest(ElasticEmailApiRequest $request)
     {
         $data = $request->getData();
         $data[self::API_KEY_FIELD] = $this->apiKey;

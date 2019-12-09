@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 namespace AdpElasticMail;
 
@@ -10,7 +9,7 @@ class ElasticEmailRequestBuilder
      *
      * @return ElasticEmailApiRequest
      */
-    public function buildLoadTemplateRequest(int $templateId): ElasticEmailApiRequest
+    public function buildLoadTemplateRequest($templateId)
     {
         return new ElasticEmailApiRequest(
             ElasticEmailApiConstant::LOAD_TEMPLATE_URL,
